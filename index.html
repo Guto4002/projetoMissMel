@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MISS MEL | Moda Feminina Atacado</title>
+<meta name="description" content="Miss Mel. Moda feminina em atacado direto de Caruaru. Coleção alto verão, pronta entrega, preço exclusivo para revendedor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MISS MEL - PROTOTIPO 42.dev
+   Direcao visual: Verao Autoral
+   Arquivo unico | CSS e JS embutidos
+   ============================================================ */
+
+:root{
+  --areia:#F7F2EA;
+  --areia-2:#EFE5D6;
+  --areia-3:#E4D7C4;
+  --branco:#FFFDFA;
+  --tinta:#1B1917;
+  --tinta-2:#4A443D;
+  --tinta-3:#8A8176;
+  --terracota:#B2502A;
+  --terracota-esc:#8E3E20;
+  --oliva:#5C6342;
+  --royal:#1E3A6E;
+  --linha:rgba(27,25,23,.12);
+  --sombra:0 18px 50px -24px rgba(27,25,23,.35);
+  --display:'Playfair Display',Georgia,serif;
+  --corpo:'Jost',system-ui,-apple-system,sans-serif;
+  --max:1320px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--corpo);
+  background:var(--areia);
+  color:var(--tinta);
+  font-weight:300;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body.trava{overflow:hidden}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select{font-family:inherit}
+a{color:inherit;text-decoration:none}
+
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 28px}
+
+/* ---------- tipografia ---------- */
+.display{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:-.015em}
+.olho{
+  font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;
+  font-weight:500;color:var(--terracota);
+}
+.olho-claro{color:rgba(255,253,250,.75)}
+
+/* ============ BARRA DE AVISO DO PROTOTIPO ============ */
+.aviso-proto{
+  background:var(--tinta);color:var(--areia);
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  text-align:center;padding:9px 16px;position:relative;z-index:200;
+  font-weight:400;
+}
+.aviso-proto b{color:#E9B949;font-weight:500}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(247,242,234,.82);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .4s,background .4s,padding .4s;
+}
+.nav.densa{border-bottom-color:var(--linha);background:rgba(247,242,234,.95)}
+.nav-in{
+  display:flex;align-items:center;gap:28px;
+  height:86px;transition:height .4s var(--ease);
+}
+.nav.densa .nav-in{height:68px}
+
+.logo{display:flex;align-items:center;flex-shrink:0}
+.logo svg{height:40px;width:auto;transition:height .4s var(--ease)}
+.nav.densa .logo svg{height:33px}
+
+.menu{display:flex;gap:26px;margin-left:12px;flex:1}
+.menu a{
+  font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:400;color:var(--tinta-2);position:relative;padding:6px 0;
+  transition:color .3s;
+}
+.menu a::after{
+  content:'';position:absolute;left:0;bottom:0;width:0;height:1px;
+  background:var(--terracota);transition:width .35s var(--ease);
+}
+.menu a:hover{color:var(--terracota)}
+.menu a:hover::after{width:100%}
+
+.nav-acoes{display:flex;align-items:center;gap:8px}
+.ico-btn{
+  width:40px;height:40px;display:grid;place-items:center;border-radius:50%;
+  transition:background .3s;position:relative;
+}
+.ico-btn:hover{background:var(--areia-2)}
+.ico-btn svg{width:19px;height:19px;stroke:var(--tinta);stroke-width:1.4;fill:none}
+.badge-cart{
+  position:absolute;top:3px;right:2px;min-width:17px;height:17px;padding:0 4px;
+  background:var(--terracota);color:#fff;border-radius:9px;
+  font-size:.62rem;font-weight:600;display:none;place-items:center;line-height:1;
+}
+.badge-cart.on{display:grid}
+
+.btn-rev{
+  display:flex;align-items:center;gap:8px;
+  padding:11px 20px;border:1px solid var(--tinta);border-radius:40px;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  transition:background .35s var(--ease),color .35s var(--ease);white-space:nowrap;
+}
+.btn-rev:hover{background:var(--tinta);color:var(--areia)}
+.btn-rev.logado{background:var(--oliva);border-color:var(--oliva);color:#fff}
+.btn-rev svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.5;fill:none}
+
+.hamb{display:none;width:40px;height:40px;place-items:center}
+.hamb span{display:block;width:21px;height:1.5px;background:var(--tinta);transition:.3s}
+.hamb span+span{margin-top:5px}
+
+/* menu mobile */
+.drawer-menu{
+  position:fixed;inset:0;background:var(--areia);z-index:150;
+  transform:translateX(100%);transition:transform .5s var(--ease);
+  padding:28px;display:flex;flex-direction:column;
+}
+.drawer-menu.on{transform:translateX(0)}
+.drawer-menu nav{margin-top:56px;display:flex;flex-direction:column;gap:6px}
+.drawer-menu nav a{
+  font-family:var(--display);font-size:2.1rem;padding:10px 0;
+  border-bottom:1px solid var(--linha);
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;height:clamp(560px,92vh,880px);
+  overflow:hidden;background:var(--tinta);
+}
+.hero-slides{position:absolute;inset:0}
+.hero-sl{
+  position:absolute;inset:0;opacity:0;
+  transition:opacity 1.6s var(--ease);
+}
+.hero-sl.on{opacity:1}
+.hero-sl img{
+  width:100%;height:100%;object-fit:cover;object-position:center 22%;
+  transform:scale(1.04);
+}
+.hero-sl.on img{animation:ken 9s linear forwards}
+@keyframes ken{from{transform:scale(1.04)}to{transform:scale(1.16)}}
+.hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(100deg,rgba(27,25,23,.72) 0%,rgba(27,25,23,.42) 42%,rgba(27,25,23,.12) 72%,rgba(27,25,23,.3) 100%);
+}
+.hero-in{
+  position:relative;z-index:3;height:100%;
+  display:flex;flex-direction:column;justify-content:center;
+  max-width:var(--max);margin:0 auto;padding:0 28px;
+}
+.hero-txt{max-width:640px;color:var(--branco)}
+.mask{overflow:hidden;display:block}
+.mask>span{
+  display:block;transform:translateY(105%);
+  animation:sobe 1.15s var(--ease) forwards;
+}
+@keyframes sobe{to{transform:translateY(0)}}
+.hero h1{font-size:clamp(2.9rem,7.2vw,5.6rem);font-weight:400;margin:18px 0 0}
+.hero h1 em{font-style:italic;color:#F0C9A8}
+.hero p{
+  margin-top:24px;font-size:1.06rem;max-width:480px;
+  color:rgba(255,253,250,.84);font-weight:300;
+  opacity:0;animation:fade 1s .75s var(--ease) forwards;
+}
+@keyframes fade{to{opacity:1}}
+.hero-cta{
+  display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;
+  opacity:0;animation:fade 1s .95s var(--ease) forwards;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 32px;border-radius:40px;
+  font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  transition:transform .35s var(--ease),background .35s,color .35s,box-shadow .35s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.6;fill:none}
+.btn-pri{background:var(--terracota);color:#fff;box-shadow:0 12px 30px -12px rgba(178,80,42,.8)}
+.btn-pri:hover{background:var(--terracota-esc)}
+.btn-ghost{border:1px solid rgba(255,253,250,.5);color:var(--branco)}
+.btn-ghost:hover{background:var(--branco);color:var(--tinta);border-color:var(--branco)}
+.btn-dark{background:var(--tinta);color:var(--areia)}
+.btn-dark:hover{background:#000}
+.btn-oliva{background:var(--oliva);color:#fff}
+
+.hero-scroll{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(255,253,250,.6);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
+}
+.hero-scroll i{display:block;width:1px;height:38px;background:rgba(255,253,250,.4);position:relative;overflow:hidden}
+.hero-scroll i::after{
+  content:'';position:absolute;top:-38px;left:0;width:1px;height:38px;background:var(--branco);
+  animation:desce 2s infinite var(--ease);
+}
+@keyframes desce{to{top:38px}}
+
+.hero-dots{position:absolute;bottom:34px;right:30px;z-index:4;display:flex;gap:8px}
+.hero-dots button{
+  width:26px;height:2px;background:rgba(255,253,250,.35);transition:background .4s;
+}
+.hero-dots button.on{background:var(--branco)}
+
+/* ============ MARQUEE ============ */
+.marquee{
+  background:var(--tinta);color:var(--areia);padding:16px 0;overflow:hidden;
+  border-top:1px solid rgba(255,253,250,.08);
+}
+.marquee-in{display:flex;width:max-content;animation:desliza 34s linear infinite}
+.marquee:hover .marquee-in{animation-play-state:paused}
+.marquee span{
+  font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;
+  padding:0 26px;display:flex;align-items:center;gap:26px;white-space:nowrap;
+  color:rgba(247,242,234,.82);
+}
+.marquee span::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--terracota)}
+@keyframes desliza{to{transform:translateX(-50%)}}
+
+/* ============ REVEAL ============ */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.vis{opacity:1;transform:none}
+.rv-d1{transition-delay:.09s}.rv-d2{transition-delay:.18s}.rv-d3{transition-delay:.27s}
+.rv-d4{transition-delay:.36s}.rv-d5{transition-delay:.45s}
+
+/* ============ SECOES ============ */
+.sec{padding:clamp(72px,10vw,128px) 0}
+.sec-head{margin-bottom:52px;max-width:720px}
+.sec-head h2{font-size:clamp(2.1rem,4.6vw,3.5rem);margin:14px 0 0}
+.sec-head p{margin-top:16px;color:var(--tinta-2);font-size:1.02rem;max-width:560px}
+.sec-head.centro{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head.centro p{margin-left:auto;margin-right:auto}
+
+/* ---- categorias ---- */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat{
+  position:relative;aspect-ratio:3/4.1;overflow:hidden;border-radius:4px;
+  background:var(--areia-2);display:block;
+}
+.cat:nth-child(1),.cat:nth-child(6){grid-row:span 1}
+.cat img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.1s var(--ease),filter .6s;
+  filter:saturate(.95);
+}
+.cat:hover img{transform:scale(1.07);filter:saturate(1.1)}
+.cat::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(27,25,23,.72),rgba(27,25,23,.05) 55%);
+}
+.cat-txt{
+  position:absolute;left:20px;right:20px;bottom:18px;z-index:2;color:var(--branco);
+  display:flex;align-items:flex-end;justify-content:space-between;gap:10px;
+}
+.cat-txt h3{font-family:var(--display);font-size:1.5rem;font-weight:400;line-height:1.1}
+.cat-txt small{
+  font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,253,250,.65);display:block;margin-top:4px;
+}
+.cat-seta{
+  width:34px;height:34px;border:1px solid rgba(255,253,250,.45);border-radius:50%;
+  display:grid;place-items:center;flex-shrink:0;
+  transition:background .4s,border-color .4s,transform .4s var(--ease);
+}
+.cat:hover .cat-seta{background:var(--branco);border-color:var(--branco);transform:rotate(-45deg)}
+.cat-seta svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none;transition:stroke .4s}
+.cat:hover .cat-seta svg{stroke:var(--tinta)}
+
+/* ---- faixa revendedor ---- */
+.faixa-rev{
+  background:var(--oliva);color:#fff;
+  padding:clamp(54px,7vw,86px) 0;position:relative;overflow:hidden;
+}
+.faixa-rev::before{
+  content:'';position:absolute;top:-60%;right:-8%;width:46%;height:220%;
+  background:rgba(255,255,255,.045);transform:rotate(14deg);
+}
+.faixa-in{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center;position:relative;z-index:2}
+.faixa-in h2{font-family:var(--display);font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:400;line-height:1.12}
+.faixa-in p{margin-top:16px;color:rgba(255,255,255,.82);max-width:480px}
+.faixa-passos{display:flex;flex-direction:column;gap:2px}
+.passo{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:16px 0;border-top:1px solid rgba(255,255,255,.2);
+}
+.passo:last-child{border-bottom:1px solid rgba(255,255,255,.2)}
+.passo b{
+  font-family:var(--display);font-size:1.25rem;font-weight:400;
+  color:rgba(255,255,255,.55);line-height:1;min-width:30px;
+}
+.passo div strong{display:block;font-weight:500;font-size:.95rem;letter-spacing:.01em}
+.passo div span{font-size:.86rem;color:rgba(255,255,255,.72)}
+
+/* ============ CATALOGO ============ */
+.cat-bar{
+  display:flex;gap:16px;align-items:center;flex-wrap:wrap;
+  padding-bottom:22px;border-bottom:1px solid var(--linha);margin-bottom:30px;
+}
+.chips{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+.chip{
+  padding:9px 18px;border:1px solid var(--linha);border-radius:40px;
+  font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;font-weight:400;
+  color:var(--tinta-2);transition:.3s var(--ease);white-space:nowrap;
+}
+.chip:hover{border-color:var(--tinta-3);color:var(--tinta)}
+.chip.on{background:var(--tinta);border-color:var(--tinta);color:var(--areia);font-weight:500}
+.busca{position:relative;display:flex;align-items:center}
+.busca svg{position:absolute;left:14px;width:16px;height:16px;stroke:var(--tinta-3);stroke-width:1.5;fill:none}
+.busca input{
+  padding:11px 16px 11px 40px;border:1px solid var(--linha);border-radius:40px;
+  background:transparent;font-size:.86rem;width:216px;color:var(--tinta);
+  transition:border-color .3s,width .4s var(--ease);
+}
+.busca input:focus{outline:none;border-color:var(--tinta);width:250px}
+.ordenar{
+  padding:11px 16px;border:1px solid var(--linha);border-radius:40px;
+  background:transparent;font-size:.78rem;color:var(--tinta-2);cursor:pointer;
+}
+.ordenar:focus{outline:none;border-color:var(--tinta)}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 20px}
+.card{position:relative;opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.card.vis{opacity:1;transform:none}
+.card-img{
+  position:relative;aspect-ratio:3/4.2;overflow:hidden;border-radius:3px;
+  background:var(--areia-2);
+}
+.card-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1s var(--ease),filter .5s;
+}
+.card:hover .card-img img{transform:scale(1.06)}
+.card.esg .card-img img{filter:grayscale(.72) opacity(.72)}
+.tag{
+  position:absolute;top:12px;left:12px;z-index:2;
+  padding:6px 12px;border-radius:30px;
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+}
+.tag-esg{background:rgba(27,25,23,.86);color:var(--areia)}
+.tag-novo{background:var(--terracota);color:#fff}
+.card-fav{
+  position:absolute;top:10px;right:10px;z-index:2;
+  width:34px;height:34px;border-radius:50%;background:rgba(255,253,250,.9);
+  display:grid;place-items:center;opacity:0;transform:translateY(-6px);
+  transition:.35s var(--ease);
+}
+.card:hover .card-fav{opacity:1;transform:none}
+.card-fav svg{width:15px;height:15px;stroke:var(--tinta);stroke-width:1.4;fill:none}
+.card-fav.on svg{fill:var(--terracota);stroke:var(--terracota)}
+
+.card-add{
+  position:absolute;left:10px;right:10px;bottom:10px;z-index:2;
+  padding:13px;background:rgba(27,25,23,.92);color:var(--areia);
+  border-radius:3px;text-align:center;
+  font-size:.68rem;letter-spacing:.17em;text-transform:uppercase;font-weight:500;
+  opacity:0;transform:translateY(12px);transition:.4s var(--ease);
+  backdrop-filter:blur(6px);
+}
+.card:hover .card-add{opacity:1;transform:none}
+.card-add:hover{background:var(--terracota)}
+.card.esg .card-add{display:none}
+
+.card-info{padding:14px 2px 0}
+.card-info h3{
+  font-size:.84rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--tinta);line-height:1.35;
+}
+.card-info .ref{font-size:.68rem;color:var(--tinta-3);letter-spacing:.1em;margin-top:3px}
+.preco{margin-top:9px;display:flex;align-items:baseline;gap:8px;min-height:26px}
+.preco .valor{font-family:var(--display);font-size:1.22rem;color:var(--tinta)}
+.preco .un{font-size:.68rem;color:var(--tinta-3);letter-spacing:.08em}
+.preco-lock{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--terracota);font-weight:500;
+}
+.preco-lock svg{width:13px;height:13px;stroke:currentColor;stroke-width:1.6;fill:none}
+
+.vazio{grid-column:1/-1;text-align:center;padding:70px 0;color:var(--tinta-3)}
+.vazio h3{font-family:var(--display);font-size:1.6rem;color:var(--tinta-2);font-weight:400}
+
+.mais-wrap{text-align:center;margin-top:52px}
+
+/* ============ QUEM SOMOS ============ */
+.sobre{background:var(--areia-2);position:relative;overflow:hidden}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,86px);align-items:center}
+.sobre-fotos{position:relative;aspect-ratio:1/1.12}
+.sobre-f{position:absolute;overflow:hidden;border-radius:4px;box-shadow:var(--sombra)}
+.sobre-f img{width:100%;height:100%;object-fit:cover}
+.sobre-f1{width:66%;height:78%;top:0;left:0;z-index:1}
+.sobre-f2{width:48%;height:54%;bottom:0;right:0;z-index:2}
+.sobre-selo{
+  position:absolute;bottom:14%;left:4%;z-index:3;
+  background:var(--terracota);color:#fff;border-radius:50%;
+  width:112px;height:112px;display:grid;place-content:center;text-align:center;
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;line-height:1.7;
+  box-shadow:0 14px 34px -12px rgba(178,80,42,.7);
+  animation:gira 22s linear infinite;
+}
+@keyframes gira{to{transform:rotate(360deg)}}
+.sobre-selo b{display:block;font-family:var(--display);font-size:1.35rem;letter-spacing:0;font-weight:500}
+
+.sobre-txt h2{font-size:clamp(2.1rem,4.4vw,3.3rem);margin:14px 0 0}
+.sobre-txt h2 em{font-style:italic;color:var(--terracota)}
+.sobre-txt .lead{
+  margin-top:22px;font-size:1.1rem;color:var(--tinta-2);line-height:1.75;
+}
+.sobre-txt .corpo{margin-top:16px;color:var(--tinta-2);line-height:1.8}
+.pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:38px}
+.pilar{padding-top:18px;border-top:1px solid var(--tinta-3)}
+.pilar b{font-family:var(--display);font-size:1.05rem;font-weight:500;display:block}
+.pilar span{font-size:.85rem;color:var(--tinta-2);line-height:1.55;display:block;margin-top:5px}
+
+.nums{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  margin-top:clamp(56px,7vw,86px);padding-top:44px;border-top:1px solid var(--linha);
+}
+.num b{
+  font-family:var(--display);font-size:clamp(2.3rem,4.4vw,3.4rem);
+  font-weight:400;display:block;line-height:1;color:var(--terracota);
+}
+.num span{
+  display:block;margin-top:9px;font-size:.72rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--tinta-2);
+}
+
+/* ============ DEPOIMENTOS ============ */
+.deps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.dep{
+  background:var(--branco);padding:32px 28px;border-radius:4px;
+  border:1px solid var(--linha);display:flex;flex-direction:column;gap:18px;
+}
+.dep-estrelas{display:flex;gap:3px}
+.dep-estrelas svg{width:14px;height:14px;fill:var(--terracota)}
+.dep p{font-family:var(--display);font-size:1.08rem;line-height:1.6;color:var(--tinta);font-style:italic}
+.dep footer{display:flex;align-items:center;gap:12px;margin-top:auto}
+.dep-av{
+  width:40px;height:40px;border-radius:50%;background:var(--areia-3);
+  display:grid;place-items:center;font-size:.85rem;font-weight:500;color:var(--tinta-2);
+}
+.dep footer b{display:block;font-size:.88rem;font-weight:500}
+.dep footer span{font-size:.75rem;color:var(--tinta-3);letter-spacing:.06em}
+
+/* ============ CTA FINAL ============ */
+.cta-final{
+  position:relative;overflow:hidden;background:var(--tinta);color:var(--areia);
+  padding:clamp(76px,10vw,130px) 0;text-align:center;
+}
+.cta-final img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.26;transform:scale(1.05);
+}
+.cta-final .wrap{position:relative;z-index:2}
+.cta-final h2{font-size:clamp(2.2rem,5vw,3.8rem);margin:16px auto 0;max-width:720px}
+.cta-final h2 em{font-style:italic;color:#F0C9A8}
+.cta-final p{margin:20px auto 0;max-width:470px;color:rgba(247,242,234,.76)}
+.cta-final .hero-cta{justify-content:center;animation:none;opacity:1}
+
+/* ============ RODAPE ============ */
+.foot{background:var(--areia-2);padding:64px 0 26px;border-top:1px solid var(--linha)}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:38px}
+.foot-logo svg{height:38px;width:auto;margin-bottom:16px}
+.foot p{font-size:.88rem;color:var(--tinta-2);max-width:280px;line-height:1.7}
+.foot h4{
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:600;margin-bottom:16px;color:var(--tinta);
+}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.foot ul a{font-size:.89rem;color:var(--tinta-2);transition:color .3s,padding-left .3s}
+.foot ul a:hover{color:var(--terracota);padding-left:5px}
+.socials{display:flex;gap:9px;margin-top:18px}
+.socials a{
+  width:38px;height:38px;border:1px solid var(--linha);border-radius:50%;
+  display:grid;place-items:center;transition:.35s var(--ease);
+}
+.socials a:hover{background:var(--tinta);border-color:var(--tinta)}
+.socials svg{width:16px;height:16px;stroke:var(--tinta);stroke-width:1.5;fill:none;transition:stroke .35s}
+.socials a:hover svg{stroke:var(--areia)}
+.foot-base{
+  margin-top:48px;padding-top:22px;border-top:1px solid var(--linha);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:.76rem;color:var(--tinta-3);letter-spacing:.04em;
+}
+.foot-base a{color:var(--terracota)}
+
+/* ============ WHATSAPP FLUTUANTE ============ */
+.zap{
+  position:fixed;right:22px;bottom:22px;z-index:90;
+  width:56px;height:56px;border-radius:50%;background:#25D366;
+  display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.6);
+  transition:transform .35s var(--ease);
+}
+.zap:hover{transform:scale(1.08)}
+.zap svg{width:28px;height:28px;fill:#fff}
+
+/* ============ MODAIS / DRAWERS ============ */
+.overlay{
+  position:fixed;inset:0;background:rgba(27,25,23,.55);z-index:160;
+  opacity:0;pointer-events:none;transition:opacity .4s;
+  backdrop-filter:blur(3px);
+}
+.overlay.on{opacity:1;pointer-events:auto}
+
+.modal{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-46%) scale(.97);
+  width:min(440px,calc(100vw - 36px));max-height:88vh;overflow-y:auto;
+  background:var(--areia);z-index:170;border-radius:6px;padding:40px 34px;
+  opacity:0;pointer-events:none;transition:.45s var(--ease);
+  box-shadow:0 40px 90px -30px rgba(27,25,23,.6);
+}
+.modal.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.modal h3{font-family:var(--display);font-size:1.75rem;font-weight:400;line-height:1.2}
+.modal .sub{margin-top:10px;color:var(--tinta-2);font-size:.92rem}
+.fechar{
+  position:absolute;top:16px;right:16px;width:34px;height:34px;
+  display:grid;place-items:center;border-radius:50%;transition:background .3s;
+}
+.fechar:hover{background:var(--areia-2)}
+.fechar svg{width:17px;height:17px;stroke:var(--tinta);stroke-width:1.6}
+
+.campo{margin-top:20px}
+.campo label{
+  display:block;font-size:.68rem;letter-spacing:.17em;text-transform:uppercase;
+  font-weight:500;color:var(--tinta-2);margin-bottom:8px;
+}
+.campo input,.campo select{
+  width:100%;padding:14px 16px;border:1px solid var(--linha);border-radius:4px;
+  background:var(--branco);font-size:.95rem;color:var(--tinta);
+  transition:border-color .3s;
+}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--terracota)}
+.btn-bloco{width:100%;justify-content:center;margin-top:26px}
+.modal .nota{
+  margin-top:20px;padding:13px 15px;background:rgba(178,80,42,.08);
+  border-left:2px solid var(--terracota);border-radius:0 4px 4px 0;
+  font-size:.78rem;color:var(--tinta-2);line-height:1.55;
+}
+.modal .alt{text-align:center;margin-top:18px;font-size:.84rem;color:var(--tinta-2)}
+.modal .alt a{color:var(--terracota);border-bottom:1px solid currentColor}
+
+/* drawer carrinho */
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);
+  background:var(--areia);z-index:170;transform:translateX(100%);
+  transition:transform .5s var(--ease);display:flex;flex-direction:column;
+  box-shadow:-20px 0 60px -24px rgba(27,25,23,.5);
+}
+.drawer.on{transform:translateX(0)}
+.drawer-top{
+  padding:24px 26px;border-bottom:1px solid var(--linha);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.drawer-top h3{font-family:var(--display);font-size:1.4rem;font-weight:400}
+.drawer-top span{font-size:.74rem;color:var(--tinta-3);letter-spacing:.1em}
+.drawer-body{flex:1;overflow-y:auto;padding:22px 26px}
+.drawer-vazio{text-align:center;padding:70px 20px;color:var(--tinta-3)}
+.drawer-vazio svg{width:46px;height:46px;stroke:var(--areia-3);stroke-width:1.2;fill:none;margin:0 auto 18px}
+
+.item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--linha)}
+.item img{width:72px;height:96px;object-fit:cover;border-radius:3px;flex-shrink:0}
+.item-c{flex:1;min-width:0}
+.item-c h4{font-size:.8rem;font-weight:400;letter-spacing:.05em;text-transform:uppercase;line-height:1.35}
+.item-c .ref{font-size:.68rem;color:var(--tinta-3);margin-top:2px}
+.item-c .gr{font-size:.74rem;color:var(--tinta-2);margin-top:6px}
+.item-bot{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.qtd{display:flex;align-items:center;border:1px solid var(--linha);border-radius:30px}
+.qtd button{width:28px;height:28px;display:grid;place-items:center;font-size:1rem;color:var(--tinta-2)}
+.qtd button:hover{color:var(--terracota)}
+.qtd b{min-width:26px;text-align:center;font-size:.84rem;font-weight:500}
+.item-bot .vl{font-family:var(--display);font-size:1rem}
+.rm{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-3);margin-top:7px}
+.rm:hover{color:var(--terracota)}
+
+.drawer-foot{padding:22px 26px;border-top:1px solid var(--linha);background:var(--areia-2)}
+.linha-tot{display:flex;justify-content:space-between;font-size:.88rem;color:var(--tinta-2);margin-bottom:9px}
+.linha-tot.total{
+  font-size:1.05rem;color:var(--tinta);font-weight:500;
+  padding-top:11px;border-top:1px solid var(--linha);margin-top:11px;
+}
+.linha-tot.total b{font-family:var(--display);font-size:1.5rem;font-weight:500}
+.min-alerta{
+  font-size:.76rem;color:var(--terracota);margin-bottom:12px;
+  display:flex;align-items:center;gap:7px;
+}
+.min-alerta svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.6;fill:none;flex-shrink:0}
+
+/* seletor de grade */
+.grade{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:8px}
+.gr-item{text-align:center}
+.gr-item label{
+  display:block;font-size:.72rem;letter-spacing:.14em;font-weight:600;
+  color:var(--tinta-2);margin-bottom:6px;
+}
+.gr-item input{
+  width:100%;padding:10px 4px;text-align:center;border:1px solid var(--linha);
+  border-radius:4px;background:var(--branco);font-size:.95rem;
+}
+.gr-item input:focus{outline:none;border-color:var(--terracota)}
+.resumo-prod{display:flex;gap:14px;margin-top:4px}
+.resumo-prod img{width:84px;height:112px;object-fit:cover;border-radius:3px}
+.resumo-prod div h4{font-size:.9rem;font-weight:400;letter-spacing:.05em;text-transform:uppercase}
+.resumo-prod div .vl{font-family:var(--display);font-size:1.3rem;margin-top:8px;display:block}
+.resumo-prod div .un{font-size:.72rem;color:var(--tinta-3)}
+
+/* checkout */
+.steps{display:flex;gap:6px;margin:22px 0 4px}
+.step{
+  flex:1;height:3px;background:var(--areia-3);border-radius:3px;
+  position:relative;transition:background .4s;
+}
+.step.on{background:var(--terracota)}
+.step-lbl{
+  font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tinta-3);margin-top:9px;display:block;
+}
+.ck-pane{display:none}
+.ck-pane.on{display:block;animation:fadein .45s var(--ease)}
+@keyframes fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pg-ops{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.pg-op{
+  display:flex;align-items:center;gap:13px;padding:15px 16px;
+  border:1px solid var(--linha);border-radius:4px;background:var(--branco);
+  cursor:pointer;transition:border-color .3s,background .3s;
+}
+.pg-op:hover{border-color:var(--tinta-3)}
+.pg-op.on{border-color:var(--terracota);background:rgba(178,80,42,.05)}
+.pg-op i{
+  width:18px;height:18px;border:1.5px solid var(--linha);border-radius:50%;
+  flex-shrink:0;display:grid;place-items:center;
+}
+.pg-op.on i{border-color:var(--terracota)}
+.pg-op.on i::after{content:'';width:9px;height:9px;border-radius:50%;background:var(--terracota)}
+.pg-op div b{display:block;font-size:.9rem;font-weight:500}
+.pg-op div span{font-size:.78rem;color:var(--tinta-2)}
+.ok-wrap{text-align:center;padding:12px 0}
+.ok-circ{
+  width:74px;height:74px;border-radius:50%;background:var(--oliva);
+  display:grid;place-items:center;margin:0 auto 22px;
+  animation:pop .55s var(--ease);
+}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.ok-circ svg{width:34px;height:34px;stroke:#fff;stroke-width:2.2;fill:none}
+
+/* toast */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translate(-50%,120%);
+  background:var(--tinta);color:var(--areia);padding:15px 26px;border-radius:40px;
+  font-size:.84rem;z-index:200;transition:transform .5s var(--ease);
+  display:flex;align-items:center;gap:11px;box-shadow:var(--sombra);
+}
+.toast.on{transform:translate(-50%,0)}
+.toast svg{width:17px;height:17px;stroke:var(--oliva);stroke-width:2.2;fill:none}
+
+/* ============ RESPONSIVO ============ */
+@media(max-width:1080px){
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+  .menu{display:none}
+  .hamb{display:grid}
+  .btn-rev span{display:none}
+  .btn-rev{padding:11px 13px}
+  .faixa-in,.sobre-grid{grid-template-columns:1fr}
+  .deps{grid-template-columns:1fr}
+  .nums{grid-template-columns:repeat(2,1fr);gap:30px 20px}
+  .sobre-fotos{max-width:440px;margin:0 auto}
+}
+@media(max-width:640px){
+  .wrap{padding:0 18px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:18px 12px}
+  .cats{gap:10px}
+  .card-add{font-size:.62rem;padding:11px 6px;letter-spacing:.1em}
+  .card-info h3{font-size:.76rem}
+  .busca input{width:100%}
+  .busca{flex:1}
+  .cat-bar{gap:12px}
+  .pilares{grid-template-columns:1fr;gap:14px}
+  .foot-grid{grid-template-columns:1fr;gap:30px}
+  .modal{padding:34px 22px}
+  .hero-dots{right:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== AVISO DE PROTOTIPO (remover na producao) ========== -->
+<div class="aviso-proto">
+  Protótipo de apresentação &bull; 42.dev &bull; <b>valores e textos são ilustrativos</b>
+</div>
+
+<!-- ========== NAV ========== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#topo" class="logo" aria-label="Miss Mel">
+      <svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg" role="img">
+        <g fill="currentColor">
+          <path d="M120 7.5 L124.2 13.8 L131 11.2 L128.8 18.2 L135.5 20.5 L129.6 24.3 L133.4 30 L126.2 29.6 L125.3 36.5 L120 32 L114.7 36.5 L113.8 29.6 L106.6 30 L110.4 24.3 L104.5 20.5 L111.2 18.2 L109 11.2 L115.8 13.8 Z" opacity=".16"/>
+          <circle cx="120" cy="9" r="2.1"/><circle cx="107" cy="15" r="1.7"/><circle cx="133" cy="15" r="1.7"/>
+          <path d="M104 25 L107.5 14.5 L113.5 20.5 L120 10 L126.5 20.5 L132.5 14.5 L136 25 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </g>
+        <text x="120" y="52" text-anchor="middle" font-family="'Playfair Display',Georgia,serif"
+              font-size="25" letter-spacing="3.4" fill="currentColor" font-weight="500">MISS MEL</text>
+      </svg>
+    </a>
+
+    <nav class="menu">
+      <a href="#colecao">Coleção</a>
+      <a href="#categorias">Categorias</a>
+      <a href="#sobre">Quem Somos</a>
+      <a href="#revendedor">Seja Revendedor</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="nav-acoes">
+      <button class="ico-btn" id="btnBuscaTopo" aria-label="Buscar">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="btn-rev" id="btnEntrar">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span id="txtEntrar">Área do revendedor</span>
+      </button>
+      <button class="ico-btn" id="btnCarrinho" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <i class="badge-cart" id="badgeCart">0</i>
+      </button>
+      <button class="hamb" id="hamb" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- menu mobile -->
+<div class="drawer-menu" id="menuMob">
+  <button class="fechar" id="fecharMenu" aria-label="Fechar">
+    <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <nav>
+    <a href="#colecao" class="display">Coleção</a>
+    <a href="#categorias" class="display">Categorias</a>
+    <a href="#sobre" class="display">Quem Somos</a>
+    <a href="#revendedor" class="display">Seja Revendedor</a>
+    <a href="#contato" class="display">Contato</a>
+  </nav>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="topo">
+  <div class="hero-slides" id="heroSlides"></div>
+  <div class="hero-in">
+    <div class="hero-txt">
+      <span class="mask"><span class="olho olho-claro" style="animation-delay:.1s">Alto Verão 2026 &bull; Pronta entrega</span></span>
+      <h1 class="display">
+        <span class="mask"><span style="animation-delay:.22s">Moda que sai</span></span>
+        <span class="mask"><span style="animation-delay:.34s">de Caruaru para</span></span>
+        <span class="mask"><span style="animation-delay:.46s"><em>o Brasil inteiro</em></span></span>
+      </h1>
+      <p>Peças femininas desenhadas, cortadas e costuradas no maior polo de confecção do Nordeste. Atacado com grade aberta, reposição semanal e preço exclusivo para revendedor.</p>
+      <div class="hero-cta">
+        <a href="#colecao" class="btn btn-pri">
+          Ver a coleção
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <button class="btn btn-ghost" data-abrir-login>Entrar e ver preços</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+  <div class="hero-scroll"><span>Role</span><i></i></div>
+</section>
+
+<!-- ========== MARQUEE ========== -->
+<div class="marquee">
+  <div class="marquee-in" id="marquee"></div>
+</div>
+
+<!-- ========== CATEGORIAS ========== -->
+<section class="sec" id="categorias">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="olho">Navegue por peça</span>
+      <h2 class="display">Cada categoria, uma<br>história de verão</h2>
+      <p>Do vestido longo de festa ao cropped de todo dia. Toda a grade disponível para pedido imediato.</p>
+    </div>
+    <div class="cats" id="catsGrid"></div>
+  </div>
+</section>
+
+<!-- ========== FAIXA REVENDEDOR ========== -->
+<section class="faixa-rev" id="revendedor">
+  <div class="wrap faixa-in">
+    <div class="rv">
+      <span class="olho" style="color:rgba(255,255,255,.72)">Seja revendedor</span>
+      <h2 class="display">Preço de fábrica,<br>sem atravessador</h2>
+      <p>O cadastro é gratuito e leva menos de dois minutos. Depois de aprovado, você vê a tabela de atacado completa e monta seu pedido direto pelo site, a qualquer hora.</p>
+      <div class="hero-cta" style="animation:none;opacity:1;margin-top:30px">
+        <button class="btn btn-pri" data-abrir-login>Fazer meu cadastro</button>
+      </div>
+    </div>
+    <div class="faixa-passos rv rv-d2">
+      <div class="passo"><b>01</b><div><strong>Cadastre seu CNPJ ou CPF</strong><span>Lojistas, sacoleiras e revendedoras autônomas são bem-vindas.</span></div></div>
+      <div class="passo"><b>02</b><div><strong>Aprovação em até 1 dia útil</strong><span>Você recebe a liberação por WhatsApp e já vê os preços.</span></div></div>
+      <div class="passo"><b>03</b><div><strong>Monte o pedido por grade</strong><span>Escolha as peças e as quantidades por tamanho. Mínimo de 6 peças.</span></div></div>
+      <div class="passo"><b>04</b><div><strong>Receba em casa ou na loja</strong><span>Envio por transportadora, correios ou retirada em Caruaru.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CATALOGO ========== -->
+<section class="sec" id="colecao">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="olho">Coleção completa</span>
+      <h2 class="display">Novidades da semana</h2>
+      <p>Peças novas toda terça. O que está no site é o que tem em estoque.</p>
+    </div>
+
+    <div class="cat-bar rv">
+      <div class="chips" id="chips"></div>
+      <div class="busca">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="text" id="busca" placeholder="Buscar peça...">
+      </div>
+      <select class="ordenar" id="ordenar">
+        <option value="rel">Relevância</option>
+        <option value="novo">Mais recentes</option>
+        <option value="az">Nome A-Z</option>
+        <option value="menor">Menor preço</option>
+        <option value="maior">Maior preço</option>
+      </select>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div class="mais-wrap"><button class="btn btn-dark" id="btnMais">Ver mais peças</button></div>
+  </div>
+</section>
+
+<!-- ========== QUEM SOMOS ========== -->
+<section class="sec sobre" id="sobre">
+  <div class="wrap">
+    <div class="sobre-grid">
+      <div class="sobre-fotos rv">
+        <div class="sobre-f sobre-f1" id="sobreF1"></div>
+        <div class="sobre-f sobre-f2" id="sobreF2"></div>
+        <div class="sobre-selo"><span>Desde<b>2014</b>Caruaru PE</span></div>
+      </div>
+      <div class="sobre-txt rv rv-d2">
+        <span class="olho">Quem somos</span>
+        <h2 class="display">Nascemos no meio<br>da <em>feira</em>, e nunca<br>saímos de lá</h2>
+        <p class="lead">A Miss Mel começou com uma máquina de costura, uma banca no Parque das Feiras e a teimosia de fazer roupa bonita a preço que a revendedora consegue vender.</p>
+        <p class="corpo">Hoje são mais de cem peças ativas por coleção, com modelagem própria, tecido escolhido um por um e uma equipe que conhece cada cliente pelo nome. Continuamos em Caruaru, continuamos atendendo a sacoleira que leva dez peças e a loja que leva trezentas, com o mesmo cuidado.</p>
+        <div class="pilares">
+          <div class="pilar"><b>Modelagem própria</b><span>Nada de cópia pronta. Cada peça é desenhada aqui dentro.</span></div>
+          <div class="pilar"><b>Reposição semanal</b><span>Grade nova toda terça, sem esperar coleção fechar.</span></div>
+          <div class="pilar"><b>Atendimento humano</b><span>Uma pessoa de verdade no WhatsApp, não um robô.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nums">
+      <div class="num rv"><b data-num="11">0</b><span>Anos de estrada</span></div>
+      <div class="num rv rv-d1"><b data-num="120" data-suf="+">0</b><span>Peças por coleção</span></div>
+      <div class="num rv rv-d2"><b data-num="2400" data-suf="+">0</b><span>Revendedoras ativas</span></div>
+      <div class="num rv rv-d3"><b data-num="26" data-suf="">0</b><span>Estados atendidos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DEPOIMENTOS ========== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head centro rv">
+      <span class="olho">Quem já revende</span>
+      <h2 class="display">A palavra de quem vende</h2>
+    </div>
+    <div class="deps">
+      <div class="dep rv">
+        <div class="dep-estrelas"></div>
+        <p>Peguei a primeira grade com medo e vendi tudo em nove dias. Hoje faço pedido toda semana e minhas clientes já perguntam quando chega a novidade.</p>
+        <footer><div class="dep-av">RS</div><div><b>Rejane S.</b><span>Garanhuns, PE</span></div></footer>
+      </div>
+      <div class="dep rv rv-d1">
+        <div class="dep-estrelas"></div>
+        <p>O que me prendeu foi a modelagem. Serve no corpo da mulher real, e isso reduziu minha troca praticamente a zero.</p>
+        <footer><div class="dep-av">MC</div><div><b>Márcia C.</b><span>Fortaleza, CE</span></div></footer>
+      </div>
+      <div class="dep rv rv-d2">
+        <div class="dep-estrelas"></div>
+        <p>Pedido pelo site mudou minha vida. Antes eu passava o dia no WhatsApp pedindo foto e preço, agora monto tudo de madrugada e já sai nota.</p>
+        <footer><div class="dep-av">AL</div><div><b>Aline L.</b><span>Teresina, PI</span></div></footer>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:.78rem;color:var(--tinta-3);letter-spacing:.06em">
+      Depoimentos ilustrativos. Serão substituídos por clientes reais da Miss Mel.
+    </p>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section class="cta-final" id="contato">
+  <img id="ctaImg" alt="">
+  <div class="wrap">
+    <span class="olho olho-claro">Vamos juntas</span>
+    <h2 class="display">Sua próxima <em>melhor venda</em><br>começa com um pedido</h2>
+    <p>Cadastre-se para ver a tabela de atacado completa, ou chame a gente no WhatsApp que a gente te ajuda a montar a primeira grade.</p>
+    <div class="hero-cta">
+      <button class="btn btn-pri" data-abrir-login>Criar meu cadastro</button>
+      <a href="https://wa.me/5581999411825" target="_blank" rel="noopener" class="btn btn-ghost">
+        Falar no WhatsApp
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RODAPE ========== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo">
+        <svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+          <g fill="currentColor">
+            <circle cx="120" cy="9" r="2.1"/><circle cx="107" cy="15" r="1.7"/><circle cx="133" cy="15" r="1.7"/>
+            <path d="M104 25 L107.5 14.5 L113.5 20.5 L120 10 L126.5 20.5 L132.5 14.5 L136 25 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </g>
+          <text x="120" y="52" text-anchor="middle" font-family="'Playfair Display',Georgia,serif"
+                font-size="25" letter-spacing="3.4" fill="currentColor" font-weight="500">MISS MEL</text>
+        </svg>
+        <p>Confecção de moda feminina em atacado. Parque das Feiras, Caruaru, Pernambuco.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://wa.me/5581999411825" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+          <a href="#" aria-label="E-mail"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Coleção</h4>
+        <ul>
+          <li><a href="#colecao">Novidades</a></li>
+          <li><a href="#colecao">Vestidos</a></li>
+          <li><a href="#colecao">Conjuntos</a></li>
+          <li><a href="#colecao">Blusas e croppeds</a></li>
+          <li><a href="#colecao">Calças e jeans</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atacado</h4>
+        <ul>
+          <li><a href="#revendedor">Seja revendedor</a></li>
+          <li><a href="#" data-abrir-login>Acessar tabela</a></li>
+          <li><a href="#">Política de venda</a></li>
+          <li><a href="#">Trocas e devoluções</a></li>
+          <li><a href="#">Prazo de envio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5581999411825" target="_blank" rel="noopener">(81) 99941-1825</a></li>
+          <li><a href="#">contato@missmel.com.br</a></li>
+          <li><a href="#">Parque das Feiras, Caruaru PE</a></li>
+          <li><a href="#">Seg a sex, 8h às 18h</a></li>
+          <li><a href="#">Sábado, 8h às 13h</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 Miss Mel. Todos os direitos reservados. CNPJ 00.000.000/0001-00</span>
+      <span>Desenvolvido por <a href="https://42dev.online" target="_blank">42.dev</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5581999411825" target="_blank" rel="noopener" class="zap" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.4.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+</a>
+
+<!-- ========== OVERLAY / MODAIS / DRAWER ========== -->
+<div class="overlay" id="overlay"></div>
+
+<!-- login -->
+<div class="modal" id="modalLogin">
+  <button class="fechar" data-fechar><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <span class="olho">Área exclusiva</span>
+  <h3 style="margin-top:10px">Entre e veja os preços de atacado</h3>
+  <p class="sub">Informe seu CNPJ ou CPF para acessar a tabela de revendedor.</p>
+  <div class="campo">
+    <label for="doc">CNPJ ou CPF</label>
+    <input type="text" id="doc" placeholder="00.000.000/0000-00" inputmode="numeric">
+  </div>
+  <button class="btn btn-pri btn-bloco" id="btnLogar">Continuar</button>
+  <p class="alt">Primeira vez aqui? <a href="#" id="linkCadastro">Criar cadastro de revendedor</a></p>
+  <div class="nota"><b>Protótipo:</b> nenhum dado é enviado. Clique em Continuar com o campo vazio ou preenchido para simular o acesso liberado e ver a tabela de preços.</div>
+</div>
+
+<!-- grade -->
+<div class="modal" id="modalGrade">
+  <button class="fechar" data-fechar><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <span class="olho">Montar grade</span>
+  <h3 style="margin-top:10px" id="gradeTitulo">Peça</h3>
+  <div class="resumo-prod" style="margin-top:18px">
+    <img id="gradeImg" alt="">
+    <div>
+      <h4 id="gradeNome"></h4>
+      <span class="vl display" id="gradeValor"></span>
+      <span class="un">por peça, no atacado</span>
+    </div>
+  </div>
+  <div class="campo">
+    <label>Quantidade por tamanho</label>
+    <div class="grade">
+      <div class="gr-item"><label>P</label><input type="number" min="0" value="0" data-tam="P"></div>
+      <div class="gr-item"><label>M</label><input type="number" min="0" value="2" data-tam="M"></div>
+      <div class="gr-item"><label>G</label><input type="number" min="0" value="2" data-tam="G"></div>
+      <div class="gr-item"><label>GG</label><input type="number" min="0" value="0" data-tam="GG"></div>
+    </div>
+  </div>
+  <button class="btn btn-pri btn-bloco" id="btnConfirmaGrade">Adicionar ao pedido</button>
+  <div class="nota">Pedido mínimo de 6 peças no total, podendo misturar modelos.</div>
+</div>
+
+<!-- checkout -->
+<div class="modal" id="modalCheckout">
+  <button class="fechar" data-fechar><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <span class="olho">Finalizar pedido</span>
+  <div class="steps"><div class="step on"></div><div class="step"></div><div class="step"></div></div>
+  <span class="step-lbl" id="stepLbl">Etapa 1 de 3 &bull; Entrega</span>
+
+  <div class="ck-pane on" data-pane="1">
+    <h3 style="margin-top:14px;font-size:1.4rem">Para onde enviamos?</h3>
+    <div class="campo"><label>Nome da loja ou revendedora</label><input type="text" placeholder="Ex.: Boutique Flor de Lis"></div>
+    <div class="campo"><label>CEP</label><input type="text" placeholder="55000-000" inputmode="numeric"></div>
+    <div class="campo"><label>Endereço completo</label><input type="text" placeholder="Rua, número, bairro, cidade"></div>
+    <div class="campo">
+      <label>Forma de envio</label>
+      <select><option>Transportadora (3 a 7 dias úteis)</option><option>Correios PAC</option><option>Correios SEDEX</option><option>Retirada em Caruaru</option></select>
+    </div>
+    <button class="btn btn-pri btn-bloco" data-step="2">Continuar para pagamento</button>
+  </div>
+
+  <div class="ck-pane" data-pane="2">
+    <h3 style="margin-top:14px;font-size:1.4rem">Como prefere pagar?</h3>
+    <div class="pg-ops">
+      <div class="pg-op on" data-pg><i></i><div><b>PIX à vista</b><span>5% de desconto, liberação imediata</span></div></div>
+      <div class="pg-op" data-pg><i></i><div><b>Cartão de crédito</b><span>Em até 6x sem juros</span></div></div>
+      <div class="pg-op" data-pg><i></i><div><b>Boleto 28 dias</b><span>Sujeito a análise de crédito</span></div></div>
+    </div>
+    <div class="nota" style="margin-top:22px"><b>Protótipo:</b> nenhuma cobrança é feita. A integração real de pagamento entra na fase de produção.</div>
+    <button class="btn btn-pri btn-bloco" data-step="3">Revisar e confirmar</button>
+  </div>
+
+  <div class="ck-pane" data-pane="3">
+    <div class="ok-wrap">
+      <div class="ok-circ"><svg viewBox="0 0 24 24"><path d="m5 13 4.5 4.5L19 7"/></svg></div>
+      <h3 style="font-size:1.55rem">Pedido registrado</h3>
+      <p class="sub" style="margin-top:12px">Você vai receber a confirmação no WhatsApp com o código do pedido e o link de pagamento. Obrigada pela parceria.</p>
+      <div class="nota" style="text-align:left;margin-top:24px"><b>Protótipo:</b> fluxo simulado do começo ao fim, para demonstrar a experiência de compra ao cliente.</div>
+      <button class="btn btn-dark btn-bloco" data-fechar>Voltar à loja</button>
+    </div>
+  </div>
+</div>
+
+<!-- drawer carrinho -->
+<aside class="drawer" id="drawerCart">
+  <div class="drawer-top">
+    <div><h3>Seu pedido</h3><span id="cartQtdLbl">0 peças</span></div>
+    <button class="fechar" style="position:static" data-fechar><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot" id="cartFoot" style="display:none">
+    <div class="min-alerta" id="minAlerta" style="display:none">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      <span id="minTxt"></span>
+    </div>
+    <div class="linha-tot"><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div>
+    <div class="linha-tot"><span>Frete</span><span>a calcular</span></div>
+    <div class="linha-tot total"><span>Total</span><b id="total">R$ 0,00</b></div>
+    <button class="btn btn-pri btn-bloco" id="btnCheckout" style="margin-top:18px">Finalizar pedido</button>
+  </div>
+</aside>
+
+<!-- toast -->
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24"><path d="m5 13 4.5 4.5L19 7"/></svg>
+  <span id="toastTxt"></span>
+</div>
+
+<script>
+/* ============================================================
+   DADOS
+   ============================================================ */
+const PRODUTOS = [{"s":"vestido-com-babados-8458","n":"VESTIDO COM BABADOS","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/d07f96db-4072-49da-ac31-0abe1068db5f/59843-lg.webp"},{"s":"vestido-listrado-8066","n":"VESTIDO LISTRADO","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/cde13bba-e7cd-4e24-a0ed-aee0054c54ec/99875-lg.webp"},{"s":"tee-amore-8472","n":"TEE AMOUR","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.co/p/350323/067763a9-81ae-49f9-93bc-171f74bac146/51681-lg.webp"},{"s":"conjunto-de-linho-com-franja","n":"CONJUNTO DE LINHO COM FRANJA","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.co/p/350323/6a2fc4a5-9a50-4c9e-b6c5-e053c854d7f0/48098-lg.webp"},{"s":"macacao-ombro-unico-c-babado","n":"MACACÃO OMBRO ÚNICO C/ BABADO","cat":"Macacão","e":0,"i":"https://cdn-op.vesti.co/p/350323/f2f81b65-7d3b-44ec-8350-fd01ca8ef139/24674-lg.webp"},{"s":"con-cropped-com-botoes","n":"CON. CROPPED COM BOTÕES","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.co/p/350323/f37ea392-1f55-4731-92d5-5aa80b70cea8/95878-lg.webp"},{"s":"conjunto-cropped-v-8426","n":"CONJUNTO CROPPED V","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.co/p/350323/bbf9cff1-18dd-49ba-bc3d-7b255be07c53/06030-lg.webp"},{"s":"vestido-floral-8461","n":"VESTIDO FLORAL","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/f3fb2c04-d31c-4758-9aae-9ba1c5badb8a/16577-lg.webp"},{"s":"calca-listrada-8460","n":"CALÇA LISTRADA","cat":"Calças","e":0,"i":"https://cdn-op.vesti.co/p/350323/5669a716-b09a-496a-a834-82121ae5c77a/01179-lg.webp"},{"s":"blusa-solar-8370","n":"BLUSA SOLAR","cat":"Blusas","e":1,"i":"https://cdn-op.vesti.co/p/350323/f8008b80-f08a-47c8-9f16-36a4ef7e60be/40707-lg.webp"},{"s":"vestido-longo-com-aplicacao-8417","n":"VESTIDO LONGO COM APLICAÇÃO","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/98cb9a6b-e622-4616-ad34-7fd85881cc30/57198-lg.webp"},{"s":"vestido-com-botoes-8418","n":"VESTIDO COM BOTÕES","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/c7ba5e71-0d2e-4c4c-8391-2d59237958a3/63794-lg.webp"},{"s":"blusa-flores-8455","n":"BLUSA FLORES","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.co/p/350323/b7f9bb23-b228-407f-9f0c-99854f4762e0/16942-lg.webp"},{"s":"blusa-de-cambraia","n":"BLUSA DE CAMBRAIA","cat":"Blusas","e":1,"i":"https://cdn-op.vesti.co/p/350323/4fb0da31-450f-4d28-8804-3d34d7e3e6a6/15414-lg.webp"},{"s":"vestido-com-franja-8424","n":"VESTIDO COM FRANJA","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/71f8289d-a7ee-4f2a-8186-d6cc5fa32e53/86548-lg.webp"},{"s":"vestido-listrado-com-faixa","n":"VESTIDO LISTRADO COM FAIXA","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/6931d721-8c2a-400f-af75-f85ea8d36b26/27848-lg.webp"},{"s":"vestido-longo-estampado-8401","n":"VESTIDO LONGO ESTAMPADO","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/467f8989-2f58-4cf7-9917-c88483956c2a/32491-lg.webp"},{"s":"vestido-com-amarracao-8415","n":"VESTIDO COM AMARRAÇÃO","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/1c3f3fb8-3210-403b-bf61-f5fcd12ee145/09447-lg.webp"},{"s":"conjunto-estampado-8398","n":"CONJUNTO ESTAMPADO","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.co/p/350323/4408b720-5556-49e8-8f53-203682486917/77995-lg.webp"},{"s":"trijunto-estampado-8391","n":"TRIJUNTO ESTAMPADO","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.co/p/350323/98852caf-786a-4cbc-a4be-ef6e1d3707ed/58792-lg.webp"},{"s":"vestido-com-amarracao-8395","n":"VESTIDO LONGO COM AMARRAÇÃO","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/874a0209-d6c1-4a89-bf83-ba2cffe5ff17/45927-lg.webp"},{"s":"blusa-chaton","n":"BLUSA CHATON","cat":"Blusas","e":1,"i":"https://cdn-op.vesti.co/p/350323/670fd5c1-320d-445e-b1ab-8c624883ff04/90235-lg.webp"},{"s":"cropped-manga-longa-8447","n":"CROPPED MANGA LONGA","cat":"Croppeds","e":1,"i":"https://cdn-op.vesti.co/p/350323/ad3141b1-85a4-4bff-92dc-69690d1f1ddd/22851-lg.webp"},{"s":"cropped-style-8456","n":"CROPPED STYLE","cat":"Croppeds","e":0,"i":"https://cdn-op.vesti.co/p/350323/be5fbc94-b89c-4170-b964-f2ba6dcb1ff6/59328-lg.webp"},{"s":"tee-bolso","n":"TEE BOLSO","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.co/p/350323/4bf13407-f35e-4803-a24d-1f25e186b80c/15491-lg.webp"},{"s":"blusa-com-fivela-8452","n":"BLUSA COM FIVELA","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.co/p/350323/edc73c15-d098-45fe-b163-0ab5f7447bdd/24320-lg.webp"},{"s":"cropped-mm","n":"CROPPED MM","cat":"Croppeds","e":0,"i":"https://cdn-op.vesti.co/p/350323/2c838ceb-6e5b-43d0-acdc-a1b738feeeea/32664-lg.webp"},{"s":"tee-bolsa-8443","n":"TEE BOLSA","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.co/p/350323/858ddef3-cd23-4889-a858-8302c9f00738/05937-lg.webp"},{"s":"vestido-midi-com-faixa-8435","n":"VESTIDO MIDI COM FAIXA","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.co/p/350323/60d77556-f226-4af7-84a6-15cf270687cd/20518-lg.webp"},{"s":"blusa-com-amarracao-8414","n":"BLUSA COM AMARRAÇÃO","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.co/p/350323/6d2091ac-25fa-4f30-8c15-b6dc55738ba7/28976-lg.webp"},{"s":"vestido-milagres-8356","n":"VESTIDO MILAGRES","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/4f95fb84-0e4c-404c-91bd-b19edc3c2d28/08115-lg.webp"},{"s":"blusa-com-renda-8422","n":"BLUSA COM RENDA","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.co/p/350323/17f40766-f3a0-44cb-9bd7-ec85ef483fb6/13167-lg.webp"},{"s":"blusa-com-recorte-8416","n":"BLUSA COM RECORTE","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.co/p/350323/ceec70bb-fa8d-47f1-8404-34c163e06a43/21746-lg.webp"},{"s":"cropped-cereja-8420","n":"CROPPED CEREJA","cat":"Croppeds","e":0,"i":"https://cdn-op.vesti.co/p/350323/d368732d-96ce-4ba1-bddb-75b57d633719/64026-lg.webp"},{"s":"vestido-buzios-8387","n":"VESTIDO BÚZIOS","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/34bbff48-2172-45f9-a2a0-32a3af8320ca/04412-lg.webp"},{"s":"calca-de-poa-8411","n":"CALÇA DE POÁ","cat":"Calças","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/19c35e30-b19d-4950-9d66-b5454b40f6be/25810-lg.webp"},{"s":"conjunto-poa-short","n":"CONJUNTO POÁ SHORT","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/ca43b946-7984-4fa9-ae36-35354971cf87/66531-lg.webp"},{"s":"tee-renda-limoes","n":"TEE RENDA LIMÕES","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/cd073c44-9beb-4287-a514-a6cae9541626/57884-lg.webp"},{"s":"blusa-peplum-com-faixa","n":"BLUSA PEPLUM COM FAIXA","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/de22a4c3-4051-4eef-b9e2-cc99e0061ab9/59809-lg.webp"},{"s":"calca-jeans-ballom","n":"CALÇA JEANS BALLOM","cat":"Jeans","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/183c718f-50d3-4e73-9c09-9cb881d4171c/56909-lg.webp"},{"s":"vestido-sunset-8394","n":"VESTIDO SUNSET","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/e12f94ab-9a93-4f4b-964c-f7984cf52a59/80522-lg.webp"},{"s":"calca-brilho-8402","n":"CALÇA BRILHO","cat":"Calças","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/6212bd03-07c7-4ed9-bf40-1d15b0f303e2/16575-lg.webp"},{"s":"calca-ballom-com-plaquinhas","n":"CALÇA JEANS","cat":"Jeans","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/80ff9fff-47d3-4e44-9081-d35d1de8f261/98135-lg.webp"},{"s":"vestido-brisa-8381","n":"VESTIDO BRISA","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/b6102a00-00ba-48c8-baf6-c8e9f409b75d/51348-lg.webp"},{"s":"conjunto-oasis-8374","n":"CONJUNTO OÁSIS","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/0ecec133-e8d2-473f-abed-d5741fe08e8b/66746-lg.webp"},{"s":"vestido-verano-8373","n":"VESTIDO VERANO","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/bca8dc21-5df9-4242-a031-88f5318dd025/70360-lg.webp"},{"s":"vestido-londres-8384","n":"VESTIDO LONDRES","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/c9e1a593-e70e-43b8-b333-41cd9c28671d/89020-lg.webp"},{"s":"conjunto-floripa-8364","n":"CONJUNTO FLORIPA","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/5fbccf51-0bc3-4c1c-947d-477cbca14177/97132-lg.webp"},{"s":"blusa-cpktail-bar","n":"BLUSA COKTAIL BAR","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/d82d00a0-27c8-4050-ad3a-3941e282139a/95094-lg.webp"},{"s":"blusa-poa-com-franja","n":"BLUSA POÁ COM FRANJA","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/3c74da21-441c-4288-8576-7adefe74ddbc/29630-lg.webp"},{"s":"macacao-milao-8336","n":"MACACÃO MILÃO","cat":"Macacão","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/fe364f1d-c6ec-495d-aff4-ff313ca1302e/35473-lg.webp"},{"s":"conjunto-calca-envelope","n":"CONJUNTO CALÇA ENVELOPE","cat":"Conjuntos","e":1,"i":"https://cdn-op.vesti.mobi/p/350323/4e128ebd-7b20-47f6-b4af-cc7f972ffcbd/70913-lg.webp"},{"s":"conjunto-lurex-8302","n":"CONJUNTO BORDADO LUREX","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/10a41098-92c2-4af6-8e52-489fb669d70a/56242-lg.webp"},{"s":"conjunto-bella-chic","n":"CONJUNTO BELLA CHIC","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/57cc97cb-c2f5-4bba-b66c-9a5851f2f9d9/78061-lg.webp"},{"s":"vestido-com-babado-8297","n":"VESTIDO COM BABADO","cat":"Vestidos","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/aaf22b34-9205-4399-8bc6-c66bcb084a9a/55389-lg.webp"},{"s":"over-estrelas-br","n":"OVER. ESTRELAS BR","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/4277cd85-edc3-4521-8475-d8868df61c02/47474-lg.webp"},{"s":"reg-renda-brasil","n":"REGATA BRASIL","cat":"Blusas","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/ab922ff6-3655-4480-b04c-596c9cca900f/70261-lg.webp"},{"s":"calca-detonada","n":"CALÇA DETONADA","cat":"Jeans","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/9d4d55f2-1bcf-47f1-bcfe-4ba2d6a579c7/48732-lg.webp"},{"s":"saia-c-plaquinhas","n":"SAIA COM PLAQUINHAS","cat":"Saias","e":0,"i":"https://cdn-op.vesti.mobi/p/350323/5a038946-3e92-4c20-b1bd-a652319e2861/74217-lg.webp"},{"s":"con-casual-chic","n":"CON. CASUAL CHIC","cat":"Conjuntos","e":0,"i":"https://cdn-op.vesti.co/p/350323/79a4c138-ae5e-494b-8709-fc3f81560ca8/22010-lg.webp"}];
+
+/* preco de atacado ilustrativo, deterministico por slug */
+function precoDe(slug){
+  let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))>>>0;
+  const base=[34.9,39.9,42.9,46.9,49.9,54.9,58.9,62.9,66.9,72.9,78.9,84.9,89.9,94.9];
+  return base[h%base.length];
+}
+PRODUTOS.forEach((p,i)=>{p.p=precoDe(p.s); p.ord=i;});
+
+const CATEGORIAS=[
+  {nome:'Vestidos',  sub:'Longos, midi e curtos'},
+  {nome:'Conjuntos', sub:'Duas e três peças'},
+  {nome:'Blusas',    sub:'Tees, peplum e renda'},
+  {nome:'Croppeds',  sub:'Para o dia a dia'},
+  {nome:'Calças',    sub:'Alfaiataria e fluidas'},
+  {nome:'Jeans',     sub:'Modelagem brasileira'},
+  {nome:'Saias',     sub:'Midi e longas'},
+  {nome:'Macacão',   sub:'Peça única, look pronto'}
+];
+
+const money=v=>'R$ '+v.toFixed(2).replace('.',',');
+
+/* ============================================================
+   ESTADO
+   ============================================================ */
+let logado=false;
+let carrinho=[];
+let filtro='Todos';
+let termo='';
+let ordem='rel';
+let limite=12;
+let prodAtual=null;
+const MIN_PECAS=6;
+
+/* ============================================================
+   HERO
+   ============================================================ */
+const heroFotos=PRODUTOS.filter(p=>p.cat==='Vestidos'&&!p.e).slice(0,4);
+const slidesEl=document.getElementById('heroSlides');
+const dotsEl=document.getElementById('heroDots');
+heroFotos.forEach((p,i)=>{
+  const d=document.createElement('div');
+  d.className='hero-sl'+(i===0?' on':'');
+  d.innerHTML='<img src="'+p.i+'" alt="" loading="'+(i===0?'eager':'lazy')+'">';
+  slidesEl.appendChild(d);
+  const b=document.createElement('button');
+  b.className=i===0?'on':''; b.setAttribute('aria-label','Imagem '+(i+1));
+  b.onclick=()=>irSlide(i);
+  dotsEl.appendChild(b);
+});
+let slideAtual=0,timerSlide;
+function irSlide(i){
+  slideAtual=i;
+  slidesEl.querySelectorAll('.hero-sl').forEach((s,k)=>s.classList.toggle('on',k===i));
+  dotsEl.querySelectorAll('button').forEach((b,k)=>b.classList.toggle('on',k===i));
+  clearInterval(timerSlide); timerSlide=setInterval(proxSlide,6500);
+}
+function proxSlide(){ irSlide((slideAtual+1)%heroFotos.length); }
+timerSlide=setInterval(proxSlide,6500);
+
+/* imagem do CTA final */
+const ctaFoto=PRODUTOS.filter(p=>p.cat==='Conjuntos')[1]||PRODUTOS[3];
+document.getElementById('ctaImg').src=ctaFoto.i;
+
+/* fotos do quem somos */
+const sf=PRODUTOS.filter(p=>!p.e);
+document.getElementById('sobreF1').innerHTML='<img src="'+sf[7].i+'" alt="" loading="lazy">';
+document.getElementById('sobreF2').innerHTML='<img src="'+sf[15].i+'" alt="" loading="lazy">';
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+const frases=['Pronta entrega','Grade aberta a partir de 6 peças','Modelagem própria','Novidades toda terça','Direto do Parque das Feiras','Envio para todo o Brasil'];
+document.getElementById('marquee').innerHTML=[...frases,...frases].map(f=>'<span>'+f+'</span>').join('');
+
+/* ============================================================
+   CATEGORIAS
+   ============================================================ */
+const catsGrid=document.getElementById('catsGrid');
+CATEGORIAS.slice(0,4).concat(CATEGORIAS.slice(4,8)).forEach((c,idx)=>{
+  const foto=PRODUTOS.find(p=>p.cat===c.nome&&!p.e)||PRODUTOS[idx];
+  const a=document.createElement('a');
+  a.href='#colecao'; a.className='cat rv rv-d'+(idx%4+1);
+  a.innerHTML=
+    '<img src="'+foto.i+'" alt="'+c.nome+'" loading="lazy">'+
+    '<div class="cat-txt"><div><h3>'+c.nome+'</h3><small>'+c.sub+'</small></div>'+
+    '<span class="cat-seta"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>';
+  a.onclick=()=>{filtro=c.nome;limite=12;renderChips();renderGrid();};
+  catsGrid.appendChild(a);
+});
+
+/* ============================================================
+   CHIPS
+   ============================================================ */
+const chipsEl=document.getElementById('chips');
+function renderChips(){
+  const lista=['Todos',...CATEGORIAS.map(c=>c.nome)];
+  chipsEl.innerHTML=lista.map(c=>'<button class="chip'+(filtro===c?' on':'')+'" data-f="'+c+'">'+c+'</button>').join('');
+  chipsEl.querySelectorAll('.chip').forEach(b=>{
+    b.onclick=()=>{filtro=b.dataset.f;limite=12;renderChips();renderGrid();};
+  });
+}
+renderChips();
+
+/* ============================================================
+   GRID
+   ============================================================ */
+const gridEl=document.getElementById('grid');
+const btnMais=document.getElementById('btnMais');
+
+function listaFiltrada(){
+  let l=PRODUTOS.filter(p=>
+    (filtro==='Todos'||p.cat===filtro)&&
+    (!termo||p.n.toLowerCase().includes(termo))
+  );
+  if(ordem==='az')    l.sort((a,b)=>a.n.localeCompare(b.n));
+  if(ordem==='novo')  l.sort((a,b)=>a.ord-b.ord);
+  if(ordem==='menor') l.sort((a,b)=>a.p-b.p);
+  if(ordem==='maior') l.sort((a,b)=>b.p-a.p);
+  return l;
+}
+
+function renderGrid(){
+  const l=listaFiltrada();
+  const vis=l.slice(0,limite);
+  if(!l.length){
+    gridEl.innerHTML='<div class="vazio"><h3>Nenhuma peça encontrada</h3><p style="margin-top:8px">Tente outra categoria ou outro termo de busca.</p></div>';
+    btnMais.style.display='none'; return;
+  }
+  gridEl.innerHTML=vis.map((p,i)=>{
+    const novo=p.ord<6&&!p.e;
+    const precoHTML = p.e
+      ? '<span class="preco-lock" style="color:var(--tinta-3)">Indisponível</span>'
+      : (logado
+          ? '<span class="valor display">'+money(p.p)+'</span><span class="un">/ peça</span>'
+          : '<span class="preco-lock"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Ver preço</span>');
+    return ''+
+    '<article class="card'+(p.e?' esg':'')+'" data-s="'+p.s+'" style="transition-delay:'+((i%4)*70)+'ms">'+
+      '<div class="card-img">'+
+        (p.e?'<span class="tag tag-esg">Esgotado</span>':(novo?'<span class="tag tag-novo">Novo</span>':''))+
+        '<button class="card-fav" aria-label="Favoritar"><svg viewBox="0 0 24 24"><path d="M19.5 12.6 12 20l-7.5-7.4a4.6 4.6 0 0 1 0-6.5 4.6 4.6 0 0 1 6.5 0l1 1 1-1a4.6 4.6 0 0 1 6.5 0 4.6 4.6 0 0 1 0 6.5z"/></svg></button>'+
+        '<img src="'+p.i+'" alt="'+p.n+'" loading="lazy">'+
+        '<button class="card-add">'+(logado?'Montar grade':'Entrar para comprar')+'</button>'+
+      '</div>'+
+      '<div class="card-info"><h3>'+p.n+'</h3><div class="ref">Ref. '+p.s.slice(-4).toUpperCase()+'</div>'+
+      '<div class="preco">'+precoHTML+'</div></div>'+
+    '</article>';
+  }).join('');
+
+  btnMais.style.display = l.length>limite ? 'inline-flex' : 'none';
+
+  gridEl.querySelectorAll('.card').forEach(c=>{
+    obsCards.observe(c);
+    c.querySelector('.card-fav').onclick=e=>{e.stopPropagation();e.currentTarget.classList.toggle('on');};
+    const add=c.querySelector('.card-add');
+    if(add) add.onclick=()=>{
+      const p=PRODUTOS.find(x=>x.s===c.dataset.s);
+      logado ? abrirGrade(p) : abrir('modalLogin');
+    };
+  });
+}
+
+btnMais.onclick=()=>{limite+=12;renderGrid();};
+document.getElementById('busca').oninput=e=>{termo=e.target.value.toLowerCase().trim();limite=12;renderGrid();};
+document.getElementById('ordenar').onchange=e=>{ordem=e.target.value;renderGrid();};
+document.getElementById('btnBuscaTopo').onclick=()=>{
+  document.getElementById('colecao').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>document.getElementById('busca').focus(),700);
+};
+
+/* ============================================================
+   MODAIS
+   ============================================================ */
+const overlay=document.getElementById('overlay');
+function abrir(id){
+  overlay.classList.add('on');
+  document.getElementById(id).classList.add('on');
+  document.body.classList.add('trava');
+}
+function fecharTudo(){
+  overlay.classList.remove('on');
+  document.querySelectorAll('.modal,.drawer,.drawer-menu').forEach(m=>m.classList.remove('on'));
+  document.body.classList.remove('trava');
+}
+overlay.onclick=fecharTudo;
+document.querySelectorAll('[data-fechar]').forEach(b=>b.onclick=fecharTudo);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')fecharTudo();});
+document.querySelectorAll('[data-abrir-login]').forEach(b=>b.onclick=e=>{
+  e.preventDefault();
+  logado ? toast('Você já está na área do revendedor') : abrir('modalLogin');
+});
+
+/* menu mobile */
+document.getElementById('hamb').onclick=()=>{
+  document.getElementById('menuMob').classList.add('on');
+  document.body.classList.add('trava');
+};
+document.getElementById('fecharMenu').onclick=fecharTudo;
+document.querySelectorAll('#menuMob nav a').forEach(a=>a.onclick=fecharTudo);
+
+/* login */
+document.getElementById('btnEntrar').onclick=()=>{
+  if(logado){ abrirDrawerConta(); } else abrir('modalLogin');
+};
+document.getElementById('linkCadastro').onclick=e=>{e.preventDefault();entrar();};
+document.getElementById('btnLogar').onclick=entrar;
+
+function entrar(){
+  logado=true;
+  const btn=document.getElementById('btnEntrar');
+  btn.classList.add('logado');
+  document.getElementById('txtEntrar').textContent='Revendedora';
+  fecharTudo();
+  renderGrid();
+  toast('Acesso liberado. Preços de atacado visíveis.');
+}
+function abrirDrawerConta(){ toast('Área da conta entra na versão final'); }
+
+/* ============================================================
+   GRADE
+   ============================================================ */
+function abrirGrade(p){
+  prodAtual=p;
+  document.getElementById('gradeTitulo').textContent='Monte sua grade';
+  document.getElementById('gradeImg').src=p.i;
+  document.getElementById('gradeNome').textContent=p.n;
+  document.getElementById('gradeValor').textContent=money(p.p);
+  abrir('modalGrade');
+}
+document.getElementById('btnConfirmaGrade').onclick=()=>{
+  const inputs=document.querySelectorAll('#modalGrade .gr-item input');
+  const grade={}; let tot=0;
+  inputs.forEach(i=>{const q=parseInt(i.value)||0; if(q>0){grade[i.dataset.tam]=q; tot+=q;}});
+  if(!tot){ toast('Escolha pelo menos uma peça'); return; }
+  const existente=carrinho.find(c=>c.s===prodAtual.s);
+  if(existente){
+    for(const t in grade) existente.grade[t]=(existente.grade[t]||0)+grade[t];
+  } else {
+    carrinho.push({s:prodAtual.s,n:prodAtual.n,i:prodAtual.i,p:prodAtual.p,grade});
+  }
+  fecharTudo(); renderCarrinho();
+  toast(tot+(tot>1?' peças adicionadas':' peça adicionada'));
+  setTimeout(()=>abrir('drawerCart'),450);
+};
+
+/* ============================================================
+   CARRINHO
+   ============================================================ */
+const cartBody=document.getElementById('cartBody');
+const cartFoot=document.getElementById('cartFoot');
+const pecasDe=it=>Object.values(it.grade).reduce((a,b)=>a+b,0);
+
+function renderCarrinho(){
+  const totPecas=carrinho.reduce((a,it)=>a+pecasDe(it),0);
+  const subtotal=carrinho.reduce((a,it)=>a+pecasDe(it)*it.p,0);
+
+  const badge=document.getElementById('badgeCart');
+  badge.textContent=totPecas;
+  badge.classList.toggle('on',totPecas>0);
+  document.getElementById('cartQtdLbl').textContent=totPecas+(totPecas===1?' peça':' peças');
+
+  if(!carrinho.length){
+    cartBody.innerHTML='<div class="drawer-vazio">'+
+      '<svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>'+
+      '<h3 class="display" style="font-size:1.3rem;color:var(--tinta-2)">Seu pedido está vazio</h3>'+
+      '<p style="margin-top:8px;font-size:.88rem">Escolha as peças e monte a grade por tamanho.</p></div>';
+    cartFoot.style.display='none';
+    return;
+  }
+
+  cartBody.innerHTML=carrinho.map((it,idx)=>{
+    const gr=Object.entries(it.grade).map(([t,q])=>t+' ('+q+')').join('  ');
+    const q=pecasDe(it);
+    return '<div class="item">'+
+      '<img src="'+it.i+'" alt="">'+
+      '<div class="item-c">'+
+        '<h4>'+it.n+'</h4>'+
+        '<div class="ref">Ref. '+it.s.slice(-4).toUpperCase()+' &bull; '+money(it.p)+' / peça</div>'+
+        '<div class="gr">Grade: '+gr+'</div>'+
+        '<div class="item-bot">'+
+          '<div class="qtd"><button data-m="'+idx+'">&minus;</button><b>'+q+'</b><button data-p="'+idx+'">+</button></div>'+
+          '<span class="vl">'+money(q*it.p)+'</span>'+
+        '</div>'+
+        '<button class="rm" data-rm="'+idx+'">Remover</button>'+
+      '</div></div>';
+  }).join('');
+
+  cartFoot.style.display='block';
+  document.getElementById('subtotal').textContent=money(subtotal);
+  document.getElementById('total').textContent=money(subtotal);
+
+  const falta=MIN_PECAS-totPecas;
+  const alerta=document.getElementById('minAlerta');
+  const btnCk=document.getElementById('btnCheckout');
+  if(falta>0){
+    alerta.style.display='flex';
+    document.getElementById('minTxt').textContent='Faltam '+falta+(falta===1?' peça':' peças')+' para atingir o pedido mínimo de '+MIN_PECAS+'.';
+    btnCk.style.opacity='.45'; btnCk.style.pointerEvents='none';
+  } else {
+    alerta.style.display='none';
+    btnCk.style.opacity='1'; btnCk.style.pointerEvents='auto';
+  }
+
+  cartBody.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{
+    const it=carrinho[b.dataset.p];
+    const t=Object.keys(it.grade)[0];
+    it.grade[t]++; renderCarrinho();
+  });
+  cartBody.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{
+    const it=carrinho[b.dataset.m];
+    const t=Object.keys(it.grade).find(k=>it.grade[k]>0);
+    if(t){ it.grade[t]--; if(!it.grade[t]) delete it.grade[t]; }
+    if(!pecasDe(it)) carrinho.splice(b.dataset.m,1);
+    renderCarrinho();
+  });
+  cartBody.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{
+    carrinho.splice(b.dataset.rm,1); renderCarrinho();
+  });
+}
+renderCarrinho();
+
+document.getElementById('btnCarrinho').onclick=()=>abrir('drawerCart');
+
+/* ============================================================
+   CHECKOUT
+   ============================================================ */
+document.getElementById('btnCheckout').onclick=()=>{
+  fecharTudo(); irStep(1);
+  setTimeout(()=>abrir('modalCheckout'),380);
+};
+function irStep(n){
+  document.querySelectorAll('#modalCheckout .ck-pane').forEach(p=>p.classList.toggle('on',+p.dataset.pane===n));
+  document.querySelectorAll('#modalCheckout .step').forEach((s,i)=>s.classList.toggle('on',i<n));
+  const lbls=['Entrega','Pagamento','Confirmação'];
+  document.getElementById('stepLbl').textContent='Etapa '+n+' de 3 • '+lbls[n-1];
+  if(n===3) carrinho=[];
+}
+document.querySelectorAll('#modalCheckout [data-step]').forEach(b=>{
+  b.onclick=()=>{ irStep(+b.dataset.step); if(+b.dataset.step===3) renderCarrinho(); };
+});
+document.querySelectorAll('.pg-op').forEach(o=>o.onclick=()=>{
+  document.querySelectorAll('.pg-op').forEach(x=>x.classList.remove('on'));
+  o.classList.add('on');
+});
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let toastT;
+function toast(msg){
+  document.getElementById('toastTxt').textContent=msg;
+  const t=document.getElementById('toast');
+  t.classList.add('on');
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>t.classList.remove('on'),3200);
+}
+
+/* ============================================================
+   SCROLL, REVEAL, CONTADORES
+   ============================================================ */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('densa',scrollY>40),{passive:true});
+
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
+},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+const obsCards=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('vis'); obsCards.unobserve(e.target); } });
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+
+/* contadores */
+const obsNum=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target, alvo=+el.dataset.num, suf=el.dataset.suf||'';
+    let n=0; const passo=Math.max(1,Math.ceil(alvo/55));
+    const t=setInterval(()=>{
+      n+=passo;
+      if(n>=alvo){ n=alvo; clearInterval(t); }
+      el.textContent=n.toLocaleString('pt-BR')+suf;
+    },26);
+    obsNum.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-num]').forEach(el=>obsNum.observe(el));
+
+/* estrelas */
+const estrela='<svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5 4.9 1.2 7L12 18l-6.2 3.4L7 14.4l-5-4.9 7-.9z"/></svg>';
+document.querySelectorAll('.dep-estrelas').forEach(d=>d.innerHTML=estrela.repeat(5));
+
+/* parallax leve no hero */
+addEventListener('scroll',()=>{
+  const y=scrollY;
+  if(y<900) slidesEl.style.transform='translateY('+(y*.22)+'px)';
+},{passive:true});
+
+/* ============================================================
+   INICIO
+   ============================================================ */
+renderGrid();
+</script>
+</body>
+</html>
